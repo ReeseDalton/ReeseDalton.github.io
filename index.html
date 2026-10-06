@@ -43,7 +43,8 @@
 							</nav>
 
 							<ul class="icons header-icons">
-							<li><a href="https://www.linkedin.com/in/brenton-reese-dalton/" target="_blank" rel="noopener" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+								<li><a href="https://www.linkedin.com/in/brenton-reese-dalton/" target="_blank" rel="noopener" class="icon brands fa-linkedin" title="LinkedIn"><span class="label">LinkedIn</span></a></li>
+								<li><button type="button" id="open-contact" class="icon solid fa-envelope" title="Send me a message"><span class="label">Email</span></button></li>
 							</ul>
 							</header>
 
@@ -465,6 +466,39 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 		<!-- BG -->
 			<div id="bg"></div>
 
+		<!-- Contact pop-up -->
+			<div id="contact-modal" class="contact-modal">
+			<div class="contact-modal-box" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+				<button type="button" class="contact-close" aria-label="Close">&times;</button>
+				<h3 id="contact-title">Send me a message</h3>
+
+				<form id="contact-form" action="https://formspree.io/f/xoejvqyd" method="post">
+				<div class="fields">
+					<div class="field half">
+					<label for="cf-name">Name</label>
+					<input type="text" name="name" id="cf-name" required />
+					</div>
+					<div class="field half">
+					<label for="cf-email">Email</label>
+					<input type="email" name="email" id="cf-email" required />
+					</div>
+					<div class="field">
+					<label for="cf-message">Message</label>
+					<textarea name="message" id="cf-message" rows="4" required></textarea>
+					</div>
+				</div>
+
+				<!-- Spam trap: leave empty -->
+				<input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+				<ul class="actions">
+					<li><input type="submit" value="Send" class="primary" /></li>
+				</ul>
+				<p id="contact-status" role="status"></p>
+				</form>
+			</div>
+			</div>
+
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
@@ -569,5 +603,54 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					updateFocus();
 				})();
 				</script>
+
+				<script>
+					(function () {
+						const modal = document.getElementById('contact-modal');
+						const openBtn = document.getElementById('open-contact');
+						const closeBtn = modal.querySelector('.contact-close');
+						const form = document.getElementById('contact-form');
+						const status = document.getElementById('contact-status');
+
+						function openModal() {
+						modal.classList.add('open');
+						status.textContent = '';
+						document.getElementById('cf-name').focus();
+						}
+
+						function closeModal() {
+						modal.classList.remove('open');
+						}
+
+						openBtn.addEventListener('click', openModal);
+						closeBtn.addEventListener('click', closeModal);
+						modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+						document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+						form.addEventListener('submit', async e => {
+						e.preventDefault();
+						status.textContent = 'Sending...';
+
+						try {
+							const res = await fetch(form.action, {
+							method: 'POST',
+							body: new FormData(form),
+							headers: { 'Accept': 'application/json' }
+							});
+
+							if (res.ok) {
+							status.textContent = 'Thanks! Your message was sent.';
+							form.reset();
+							setTimeout(closeModal, 2500);
+							} else {
+							status.textContent = 'Something went wrong. Please try again.';
+							}
+						} catch (err) {
+							status.textContent = 'Could not send. Please check your connection and try again.';
+						}
+						});
+					})();
+				</script>
+				
 	</body>
 </html>
