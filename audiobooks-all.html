@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>All Audiobooks</title>
+  <title>All Audiobooks | Brenton Reese Dalton</title>
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="stylesheet" href="assets/css/bookcard.css" />
 </head>
@@ -525,6 +525,21 @@
     card.style.setProperty('--i', i);
   });
 </script>
+
+<script>
+				(function () {
+					const btn = document.getElementById('back-to-top');
+					if (!btn) return;
+
+					window.addEventListener('scroll', () => {
+					btn.classList.toggle('visible', window.scrollY > 300);
+					});
+
+					btn.addEventListener('click', () => {
+					window.scrollTo({ top: 0, behavior: 'smooth' });
+					});
+				})();
+				</script>
 
 
 
