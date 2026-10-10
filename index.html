@@ -56,15 +56,115 @@
 							<h2 class="major">recording</h2>
 
 							<div class="sub-tabs" role="tablist">
-								<button type="button" class="sub-tab active" data-target="rec-music" role="tab">Music Recording/Mixing</button>
+								<button type="button" class="sub-tab active" data-target="rec-prod" role="tab">Music Production</button>
 								<button type="button" class="sub-tab" data-target="rec-sound" role="tab">Sound Design</button>
 								<button type="button" class="sub-tab" data-target="rec-adr" role="tab">ADR</button>
-								<button type="button" class="sub-tab" data-target="rec-prod" role="tab">Production</button>
+								<button type="button" class="sub-tab" data-target="rec-music" role="tab">Recording/Mixing</button>
 							</div>
 
-							<div class="sub-panel active" id="rec-music" role="tabpanel">
-								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
-								<p>Currently WIP.</p>
+							<div class="sub-panel active" id="rec-prod" role="tabpanel">
+							<div class="track-filters" role="group" aria-label="Filter tracks by genre">
+							<button type="button" class="filter-btn active" data-filter="all">All</button>
+							<button type="button" class="filter-btn" data-filter="games">Video Games</button>
+							<button type="button" class="filter-btn" data-filter="hiphop">Hip-Hop</button>
+							<button type="button" class="filter-btn" data-filter="edm">Dance/EDM</button>
+							</div>
+
+							<div class="track-list">
+
+							<div class="track" data-genre="games">
+								<h3>Unending Nightmare</h3>
+								<p class="track-meta">For Spooky Tune Game Jam 2023</p>
+								<audio controls preload="none">
+								<source src="audio/Games/UnendingNightmare.mp3" type="audio/mpeg" />
+								</audio>
+							</div>
+
+							<div class="track" data-genre="hiphop">
+								<h3>Barely Breathing</h3>
+								<p class="track-meta">BRIISU Beats</p>
+								<audio controls preload="none">
+								<source src="audio/Hip-Hop/BarelyBreathing.mp3" type="audio/mpeg" />
+								</audio>
+							</div>
+
+							<div class="track" data-genre="edm">
+								<h3>Shuffle Sport</h3>
+								<p class="track-meta">BRIISU Beats</p>
+								<audio controls preload="none">
+								<source src="audio/Dance/ShuffleSport.mp3" type="audio/mpeg" />
+								</audio>
+							</div>
+
+							
+							<div class="track" data-genre="games">
+								<h3>Holiday Fright Night</h3>
+								<p class="track-meta">For Spooky Tune Game Jam 2025</p>
+								<audio controls preload="none">
+								<source src="audio/Games/HolidayFrightNight.mp3" type="audio/mpeg" />
+								</audio>
+							</div>
+
+							<div class="track" data-genre="hiphop">
+								<h3>Dreams of Asia</h3>
+								<p class="track-meta">BRIISU Beats</p>
+								<audio controls preload="none">
+								<source src="audio/Hip-Hop/DreamsofAsia.mp3" type="audio/mpeg" />
+								</audio>
+							</div>
+
+							<div class="track" data-genre="edm">
+								<h3>Hot Stuff</h3>
+								<p class="track-meta">BRIISU Beats</p>
+								<audio controls preload="none">
+								<source src="audio/Dance/HotStuff.mp3" type="audio/mpeg" />
+								</audio>
+							</div>
+
+							<div class="track" data-genre="games">
+								<h3>All That Remains</h3>
+								<p class="track-meta">For Spring Tune Game Jam 2024</p>
+								<audio controls preload="none">
+								<source src="audio/Games/AllThatRemains.mp3" type="audio/mpeg" />
+								</audio>
+							</div>
+
+							<div class="track" data-genre="hiphop">
+								<h3>Summon</h3>
+								<p class="track-meta">BRIISU Beats</p>
+								<audio controls preload="none">
+								<source src="audio/Hip-Hop/Summon.mp3" type="audio/mpeg" />
+								</audio>
+							</div>
+
+							<div class="track" data-genre="edm">
+								<h3>TechNite</h3>
+								<p class="track-meta">BRIISU Beats</p>
+								<audio controls preload="none">
+								<source src="audio/Dance/TechNite.mp3" type="audio/mpeg" />
+								</audio>
+							</div>
+
+							<div class="track" data-genre="hiphop">
+								<h3>Rainbow Road</h3>
+								<p class="track-meta">BRIISU Beats</p>
+								<audio controls preload="none">
+								<source src="audio/Hip-Hop/RainbowRoad.mp3" type="audio/mpeg" />
+								</audio>
+							</div>
+
+							<div class="track" data-genre="hiphop">
+								<h3>Game On</h3>
+								<p class="track-meta">BRIISU Beats</p>
+								<audio controls preload="none">
+								<source src="audio/Hip-Hop/GameOn.mp3" type="audio/mpeg" />
+								</audio>
+							</div>
+
+
+							<!-- Copy a .track block for each song, changing data-genre -->
+
+							</div>
 							</div>
 
 							<div class="sub-panel" id="rec-sound" role="tabpanel">
@@ -120,8 +220,8 @@
 								<p>A project where I was given assets to a clip from the movie "Champion" and re-recorded the voice lines for the TV sports announcer. I recorded the voice lines in the Belmont Foley studio with the help of my room mate as the voice talent. I used an SM7B for the microphone and used Pro Tools to record, edit, and mix.</p>
 							</div>
 
-							<div class="sub-panel" id="rec-prod" role="tabpanel">
-								<h3>BRIISU Beats</h3>
+							<div class="sub-panel" id="rec-music" role="tabpanel">
+								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
 								<p>Currently WIP.</p>
 							</div>
 							</article>
@@ -648,6 +748,45 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 						} catch (err) {
 							status.textContent = 'Could not send. Please check your connection and try again.';
 						}
+						});
+					})();
+				</script>
+
+				<script>
+					(function () {
+						const players = document.querySelectorAll('audio');
+						const tracks = document.querySelectorAll('.track');
+						const filterBtns = document.querySelectorAll('.filter-btn');
+
+						function pauseAll(except) {
+						players.forEach(p => { if (p !== except) p.pause(); });
+						}
+
+						// Only one clip plays at a time
+						players.forEach(p => p.addEventListener('play', () => pauseAll(p)));
+
+						// Stop audio when switching sub-tabs
+						document.querySelectorAll('.sub-tab').forEach(tab =>
+						tab.addEventListener('click', () => pauseAll()));
+
+						// Genre filter
+						filterBtns.forEach(btn => {
+						btn.addEventListener('click', () => {
+							const filter = btn.dataset.filter;
+							filterBtns.forEach(b => b.classList.toggle('active', b === btn));
+
+							tracks.forEach(track => {
+							const genres = (track.dataset.genre || '').split(' ');
+							const show = filter === 'all' || genres.includes(filter);
+							track.classList.toggle('is-hidden', !show);
+
+							// Stop a clip that's about to disappear
+							if (!show) {
+								const audio = track.querySelector('audio');
+								if (audio) audio.pause();
+							}
+							});
+						});
 						});
 					})();
 				</script>
