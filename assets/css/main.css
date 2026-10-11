@@ -1852,6 +1852,98 @@ button.contact-close {
   background-color: rgba(255, 255, 255, 0.075);
 }
 
+.track {
+  position: relative;
+  margin: 0 0 0.9rem;
+  padding: 1rem 1.25rem 1.1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-left: 3px solid rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+  animation: trackFade 0.4s ease;
+  transition: background-color 0.2s ease;
+}
+
+.track:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* Accent color on the left edge, by first genre listed */
+.track[data-genre^="games"]  { border-left-color: #F0F0F0; }
+.track[data-genre^="hiphop"] { border-left-color: #F50000; }
+.track[data-genre^="edm"]    { border-left-color: #af2a2a; }
+
+.track-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.9rem;
+  margin: 0 0 0.35rem;
+}
+
+.track-tag {
+  font-size: 0.6rem;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.track-tag[data-g="games"]  { color: #F0F0F0; }
+.track-tag[data-g="hiphop"] { color: #F50000; }
+.track-tag[data-g="edm"]    { color: #af2a2a; }
+
+.track h3 {
+  margin: 0 0 0.2rem;
+  font-size: 0.95rem;
+}
+
+.track-meta {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.track audio {
+  display: block;
+  width: 100%;
+  color-scheme: dark;
+}
+
+.track.is-hidden {
+  display: none;
+}
+
+@keyframes trackFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Keep the dark tint and texture on top of both backgrounds */
+#bg:before {
+  z-index: 3;
+}
+
+/* Alternate background for the Production sub-tab */
+#bg .bg-alt {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: url("../../images/bg-production.jpg") center / cover no-repeat;
+  transform: scale(1.125);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease, transform 0.325s ease-in-out, filter 0.325s ease-in-out;
+}
+
+body.bg-production #bg .bg-alt {
+  opacity: 1;
+}
+
+/* Match the template's zoom and blur when a tab is open */
+body.is-article-visible #bg .bg-alt {
+  transform: scale(1.0825);
+  filter: blur(0.2rem);
+}
+
 .track-filters {
   display: flex;
   flex-wrap: wrap;
@@ -1859,7 +1951,7 @@ button.contact-close {
   margin: 0 0 1.75rem;
 }
 
-button.filter-btn {
+.track-filters button.filter-btn {
   height: auto !important;
   line-height: 1.2 !important;
   padding: 0.4rem 0 !important;
@@ -1876,27 +1968,14 @@ button.filter-btn {
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-button.filter-btn:hover {
+.track-filters button.filter-btn:hover {
   color: #fff !important;
   background: transparent !important;
   border-bottom-color: rgba(255, 255, 255, 0.4) !important;
 }
 
-button.filter-btn.active {
+.track-filters button.filter-btn.active {
   color: #fff !important;
   background: transparent !important;
   border-bottom-color: #fff !important;
-}
-
-.track {
-  animation: trackFade 0.4s ease;
-}
-
-.track.is-hidden {
-  display: none;
-}
-
-@keyframes trackFade {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
 }
