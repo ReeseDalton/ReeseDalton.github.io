@@ -1979,3 +1979,55 @@ body.is-article-visible #bg .bg-alt {
   background: transparent !important;
   border-bottom-color: #fff !important;
 }
+
+.eq {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 56px;
+  margin: 0;
+}
+
+.eq span {
+  display: block;
+  width: 4px;
+  height: var(--h);
+  border-radius: 2px;
+  transform-origin: center;
+  animation:
+    eqIntro 1.5s cubic-bezier(0.2, 0.9, 0.3, 1) var(--delay) both,
+    eqIdle var(--idle) ease-in-out calc(var(--delay) + 1.5s) infinite;
+}
+
+@keyframes eqIntro {
+  0%   { transform: scaleY(0.04); opacity: 0; }
+  25%  { transform: scaleY(1);    opacity: 1; }
+  45%  { transform: scaleY(0.3); }
+  65%  { transform: scaleY(0.9); }
+  82%  { transform: scaleY(0.55); }
+  100% { transform: scaleY(1); }
+}
+
+@keyframes eqIdle {
+  0%, 100% { transform: scaleY(1); }
+  50%      { transform: scaleY(0.78); }
+}
+
+/* Stop animating while a tab is open (the header is hidden then anyway) */
+body.is-article-visible .eq span {
+  animation-play-state: paused;
+}
+
+/* Respect visitors who turn off motion in their system settings */
+@media (prefers-reduced-motion: reduce) {
+  .eq span {
+    animation: none;
+  }
+}
+
+#header > .content:before {
+  display: none;
+}
+
+#header > .content { margin-top: 1.5rem; }

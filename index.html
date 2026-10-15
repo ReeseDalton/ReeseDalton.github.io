@@ -847,6 +847,42 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 						update();
 					})();
 				</script>
+
+				<script>
+					(function () {
+						const header = document.getElementById('header');
+						if (!header) return;
+
+						const eq = document.createElement('div');
+						eq.className = 'eq';
+						eq.setAttribute('aria-hidden', 'true');
+
+						const n = 27;                 // number of bars
+						const mid = (n - 1) / 2;
+
+						for (let i = 0; i < n; i++) {
+						const u = i / (n - 1);
+						const envelope = 0.25 + 0.75 * Math.pow(Math.sin(u * Math.PI), 1.1);
+						const variation = 0.7 + 0.3 * Math.abs(Math.sin(i * 2.7 + 1));
+						const h = Math.round(8 + 44 * envelope * variation);
+
+						// sky blue at the edges -> white in the center
+						const c = 1 - Math.abs(i - mid) / mid;
+						const r = Math.round(56 + (255 - 56) * c);
+						const g = Math.round(198 + (255 - 198) * c);
+						const b = Math.round(244 + (255 - 244) * c);
+
+						const bar = document.createElement('span');
+						bar.style.setProperty('--h', h + 'px');
+						bar.style.setProperty('--delay', (0.3 + Math.abs(i - mid) * 0.05) + 's');
+						bar.style.setProperty('--idle', (2.2 + (i % 5) * 0.35) + 's');
+						bar.style.background = 'rgb(' + r + ',' + g + ',' + b + ')';
+						eq.appendChild(bar);
+						}
+
+						header.insertBefore(eq, header.firstChild);
+					})();
+				</script>
 				
 	</body>
 </html>
